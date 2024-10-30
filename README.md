@@ -12,20 +12,25 @@ Interview project repository for a simplistic e-shop application with following 
 
 ## Project Structure
 
+
 ### :white_small_square: UI Inspiration and Project Scope
-// Todo Proje Ui calmalarin ve varsa proje ssleri
+<br/>
 
 ### :white_small_square: Tech Stack
 // Client - Server - DevOps - Db Teknolojileri hakkinda yaz
+<br/>
 
 ### :white_small_square: Environment Variables
 // env uzerinde hangi degiskenler olmali apiKey ve endpointler var ise
+<br/>
 
 ### :white_small_square: Dependencies
 // projeyi runlamak icin yuklu olmasi gereken framework ve kutuphaneler vs
+<br/>
 
 ### :white_small_square: Installation and Running Project Locally
 // belli iste
+<br/>
 
 ### :white_small_square: Used Packages and APIs
 
