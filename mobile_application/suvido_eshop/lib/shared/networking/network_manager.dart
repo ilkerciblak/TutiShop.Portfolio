@@ -15,7 +15,7 @@ class NetworkManager {
     this.headers = const {},
   });
 
-  Future<Either<Exception, Map<String, dynamic>>> get({
+  Future<ExceptionEither<Map<String, dynamic>>> get({
     required String endPoint,
     Map<String, String>? parameters = const {},
   }) async {
@@ -34,7 +34,7 @@ class NetworkManager {
     return result;
   }
 
-  Future<Either<Exception, Map<String, dynamic>>> post({
+  Future<ExceptionEither<Map<String, dynamic>>> post({
     required String endPoint,
     required Map<String, dynamic> body,
   }) async {
@@ -50,8 +50,7 @@ class NetworkManager {
     return result;
   }
 
-  TaskEither<Exception, Map<String, dynamic>> _sendRequest(
-      Future<http.Response> request) {
+  DataTask<Map<String, dynamic>> _sendRequest(Future<http.Response> request) {
     return TaskEither.tryCatch(
       () async {
         final response = await request.timeout(const Duration(seconds: 10));
