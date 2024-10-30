@@ -39,6 +39,9 @@ Interview project repository for a simplistic e-shop application with following 
 ### :white_small_square: Contact
 
 ### :white_small_square: Future Works
+- [x] Construct Flutter Project Core Works
+
+
 
 ### :white_small_square: Resources and Acknowledgements
 
