@@ -40,7 +40,7 @@ Interview project repository for a simplistic e-shop application with following 
 
 ### :white_small_square: Contact
 
-### :white_small_square: Future Works
+### :white_small_square: Project Milestones
 - [ ] Mobile Application
     - [ ] Construct Project Core (Shared)
         - [x] Project Core Dependencies
