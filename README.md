@@ -49,8 +49,8 @@ later
 
 ### :white_small_square: Environment Variables
 
-[!Note]
-There are no environment variable for now to configure
+> [!Note]
+> There are no environment variable for now to configure
 
 <br/>
 
