@@ -18,6 +18,8 @@ Interview project repository for a simplistic e-shop application with following 
 
 ### :white_small_square: Tech Stack
 // Client - Server - DevOps - Db Teknolojileri hakkinda yaz
+- Mobile Application : Flutter Framework
+
 <br/>
 
 ### :white_small_square: Environment Variables
@@ -39,7 +41,24 @@ Interview project repository for a simplistic e-shop application with following 
 ### :white_small_square: Contact
 
 ### :white_small_square: Future Works
-- [x] Construct Flutter Project Core Works
+- [] Mobile Application
+    - [] Construct Project Core (Shared)
+        - [x] Project Core Dependencies
+        - [x] Project Dummy Variables (Onboarding Content)
+        - [x] Project Core Enums
+        - [x] Project ThemeData
+    - [] Construct Shared Screens
+        - [x] Project Onboarding Screen
+        - [] Project Login Screen
+        - [] Project Home Screen with Bottom Navigation
+    - [] Construct Features
+        - [] Authentication// User
+        - [] Catalog Feature
+            - [] Product
+            - [] Category
+        - [] Basket Feature
+            - [] Hive Repo
+
 
 
 
