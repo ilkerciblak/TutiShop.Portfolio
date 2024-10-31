@@ -6,9 +6,6 @@ import 'package:suvido_eshop/presentation/onboarding/state/onboarding_cubit.dart
 import 'package:suvido_eshop/presentation/onboarding/state/onboarding_state.dart';
 import 'package:suvido_eshop/presentation/onboarding/view/onboarding_view.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
-import 'package:suvido_eshop/shared/theme/app_colors.dart';
-import 'package:suvido_eshop/shared/theme/app_spacing.dart';
-import 'package:suvido_eshop/shared/theme/app_text_styles.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -78,19 +75,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
+                  ElevatedTextButton(
+                    btnText: state.btnText,
                     onPressed: () => cubit.onBtnPressed(context),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primaryLightGreen,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: Text(
-                      state.btnText,
-                      style: AppFontStyles.boldWhite15,
-                    ),
-                  )
+                  ),
                 ],
               )
             ],
