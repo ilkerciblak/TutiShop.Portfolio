@@ -41,23 +41,23 @@ Interview project repository for a simplistic e-shop application with following 
 ### :white_small_square: Contact
 
 ### :white_small_square: Future Works
-- [] Mobile Application
-    - [] Construct Project Core (Shared)
+- [ ] Mobile Application
+    - [ ] Construct Project Core (Shared)
         - [x] Project Core Dependencies
         - [x] Project Dummy Variables (Onboarding Content)
         - [x] Project Core Enums
         - [x] Project ThemeData
-    - [] Construct Shared Screens
+    - [ ] Construct Shared Screens
         - [x] Project Onboarding Screen
-        - [] Project Login Screen
-        - [] Project Home Screen with Bottom Navigation
-    - [] Construct Features
-        - [] Authentication// User
-        - [] Catalog Feature
-            - [] Product
-            - [] Category
-        - [] Basket Feature
-            - [] Hive Repo
+        - [ ] Project Login Screen
+        - [ ] Project Home Screen with Bottom Navigation
+    - [ ] Construct Features
+        - [ ] Authentication// User
+        - [ ] Catalog Feature
+            - [ ] Product
+            - [ ] Category
+        - [ ] Basket Feature
+            - [ ] Hive Repo
 
 
 
