@@ -30,8 +30,27 @@ dev_dependencies:
 
 
 flutter:
-
+  
   uses-material-design: true
 
   assets:
     - lib/shared/assets/img/
+  fonts: 
+    - family: Merriweather
+      fonts: 
+        - asset: lib/shared/assets/fonts/Merriweather-Regular.ttf
+          style: normal
+          weight: 400
+        - asset: lib/shared/assets/fonts/Merriweather-Light.ttf
+          style: normal
+          weight: 200
+        - asset: lib/shared/assets/fonts/Merriweather-Italic.ttf
+          style: italic
+        - asset: lib/shared/assets/fonts/Merriweather-BoldItalic.ttf
+          style: italic
+          weight: 700
+        - asset: lib/shared/assets/fonts/Merriweather-Bold.ttf
+          style: normal
+          weight: 700
+      
+      

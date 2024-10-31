@@ -29,7 +29,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   void changePhange() {
     pageController.nextPage(
-      duration: Durations.medium4,
+      duration: Durations.short2,
       curve: Easing.standardAccelerate,
     );
 
@@ -47,4 +47,6 @@ class OnboardingCubit extends Cubit<OnboardingState> {
       ),
     );
   }
+
+  double dotIndicatorOpacity(int index) => pageCounter == index ? 1 : 0.5;
 }

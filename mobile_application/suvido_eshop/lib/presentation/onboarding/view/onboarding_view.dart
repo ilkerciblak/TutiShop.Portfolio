@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:suvido_eshop/presentation/onboarding/state/onboarding_state.dart';
 import 'package:suvido_eshop/shared/theme/app_spacing.dart';
-import 'package:suvido_eshop/shared/theme/app_text_styles.dart';
 
 class OnboardingView extends StatelessWidget {
   final OnboardingState state;
@@ -14,9 +13,8 @@ class OnboardingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: [
         Image(
           image: AssetImage(
@@ -32,7 +30,7 @@ class OnboardingView extends StatelessWidget {
               child: Text(
                 state.headline,
                 textAlign: TextAlign.center,
-                style: AppFontStyles.bold32.copyWith(fontSize: 23),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
           ],
@@ -46,10 +44,10 @@ class OnboardingView extends StatelessWidget {
               child: Text(
                 state.description,
                 textAlign: TextAlign.center,
-                style: AppFontStyles.bold32.copyWith(
-                  fontSize: 18,
-                  fontWeight: FontWeight.normal,
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(fontWeight: FontWeight.normal),
               ),
             ),
           ],

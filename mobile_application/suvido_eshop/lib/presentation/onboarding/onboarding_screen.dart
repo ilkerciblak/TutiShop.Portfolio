@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suvido_eshop/presentation/onboarding/state/onboarding_cubit.dart';
 import 'package:suvido_eshop/presentation/onboarding/state/onboarding_state.dart';
-import 'package:suvido_eshop/presentation/onboarding/view/onboarding_content.dart';
+import 'package:suvido_eshop/presentation/onboarding/view/onboarding_view.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
+import 'package:suvido_eshop/shared/theme/app_colors.dart';
+import 'package:suvido_eshop/shared/theme/app_spacing.dart';
+import 'package:suvido_eshop/shared/theme/app_text_styles.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -32,22 +35,64 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: BlocBuilder<OnboardingCubit, OnboardingState>(
           bloc: cubit,
           builder: (context, state) => Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
-                child: PageView.builder(
-                  controller: cubit.pageController,
-                  allowImplicitScrolling: false,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: OnboardingContent.content.length,
-                  itemBuilder: (context, index) {
-                    return OnboardingView(
-                      state: state,
-                    );
-                  },
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: PageView.builder(
+                        controller: cubit.pageController,
+                        allowImplicitScrolling: false,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: OnboardingContent.content.length,
+                        itemBuilder: (context, index) {
+                          return OnboardingView(
+                            state: state,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              const Spacer(),
-              Text(';asdsa'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:
+                    List.generate(OnboardingContent.content.length, (index) {
+                  return Container(
+                    height: 13,
+                    width: 13,
+                    margin: EdgeInsets.only(left: 3, right: 3),
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryBlack
+                          .withOpacity(cubit.dotIndicatorOpacity(index)),
+                      shape: BoxShape.circle,
+                    ),
+                  );
+                }),
+              ),
+              const SizedBox(
+                height: AppSpacing.medium,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => cubit.onBtnPressed(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryLightGreen,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text(
+                      state.btnText,
+                      style: AppFontStyles.boldWhite15,
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),
