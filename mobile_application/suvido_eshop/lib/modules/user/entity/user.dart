@@ -1,5 +1,5 @@
-import 'package:suvido_eshop/modules/user/model/address.dart';
-import 'package:suvido_eshop/modules/user/model/payment_method.dart';
+import 'package:suvido_eshop/modules/user/entity/address.dart';
+import 'package:suvido_eshop/modules/user/entity/payment_method.dart';
 
 class User {
   final String identifier;

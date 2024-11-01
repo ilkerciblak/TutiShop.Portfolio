@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
-import 'package:suvido_eshop/shared/theme/app_colors.dart';
-import 'package:suvido_eshop/shared/theme/app_text_styles.dart';
+import 'package:suvido_eshop/shared/config/init.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  initProject();
   runApp(const MyApp());
 }
 
