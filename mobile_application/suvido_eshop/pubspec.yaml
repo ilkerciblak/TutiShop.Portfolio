@@ -20,7 +20,9 @@ dependencies:
 
   # ui
   shimmer_pro: ^0.0.6
+  salomon_bottom_bar: ^3.3.2
   cupertino_icons: ^1.0.8
+
 
 dev_dependencies:
   flutter_test:

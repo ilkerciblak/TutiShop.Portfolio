@@ -18,6 +18,7 @@ class OnboardingContent {
       "headline": "Don't forget to review!",
       "description": "Search, Observe, Buy and Review!",
       "btnText": "Let's Get Started!",
+      "redirect": "home"
     },
   ];
 }
