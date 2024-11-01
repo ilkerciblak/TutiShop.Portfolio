@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:suvido_eshop/modules/user/data/model/address_model.dart';
 import 'package:suvido_eshop/modules/user/data/model/payment_method_model.dart';
-import 'package:suvido_eshop/modules/user/entity/user.dart';
+import 'package:suvido_eshop/modules/user/domain/user.dart';
 
 class UserModel {
   final String identifier;

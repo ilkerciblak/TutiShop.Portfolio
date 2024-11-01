@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:suvido_eshop/modules/user/entity/address.dart';
+import 'package:suvido_eshop/modules/user/domain/address.dart';
 
 class AddressModel {
   final String country;

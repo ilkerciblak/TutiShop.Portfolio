@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:suvido_eshop/modules/user/entity/payment_method.dart';
+import 'package:suvido_eshop/modules/user/domain/payment_method.dart';
 
 class PaymentMethodModel {
   final String cardNumber;
