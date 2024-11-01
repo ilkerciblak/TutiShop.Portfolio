@@ -173,10 +173,18 @@ class AppFontStyles {
     color: AppColors.primaryBlack,
   );
 
-  static const TextStyle bold32 = TextStyle(
-    fontSize: 32,
-    fontWeight: FontWeight.bold,
-    color: AppColors.primaryBlack,
+  static const TextStyle regularSubtitles13 = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.normal,
     fontStyle: FontStyle.normal,
+    fontFamily: 'Merriweather',
+    color: AppColors.primaryGrey,
+  );
+  static const TextStyle boldSubtitles13 = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.bold,
+    fontStyle: FontStyle.normal,
+    fontFamily: 'Merriweather',
+    color: AppColors.primaryGrey,
   );
 }
