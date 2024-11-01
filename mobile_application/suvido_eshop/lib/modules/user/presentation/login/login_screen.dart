@@ -112,6 +112,83 @@ class _LoginScreenState extends State<LoginScreen> {
               Divider(
                 color: AppColors.primaryGrey,
               ),
+              Row(
+                children: [
+                  Expanded(
+                      child: ElevatedButton.icon(
+                    iconAlignment: IconAlignment.start,
+                    style: ElevatedButton.styleFrom(
+                      iconColor: AppColors.primaryWhite,
+                      backgroundColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(
+                          color: AppColors.primaryWhite,
+                        ),
+                      ),
+                    ),
+                    onPressed: () {},
+                    label: Text(
+                      'Sign In With Email',
+                      style: AppFontStyles.boldWhite13,
+                    ),
+                    icon: Icon(Icons.email_outlined),
+                  ))
+                ],
+              ),
+              const SizedBox(
+                height: AppSpacing.small,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: ElevatedButton.icon(
+                    iconAlignment: IconAlignment.start,
+                    style: ElevatedButton.styleFrom(
+                      iconColor: AppColors.primaryWhite,
+                      backgroundColor: AppColors.primaryWhite,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide.none,
+                      ),
+                    ),
+                    onPressed: () {},
+                    label: Text(
+                      'Sign In With Apple',
+                      style: AppFontStyles.boldBlack13,
+                    ),
+                    icon: Icon(
+                      Icons.apple_outlined,
+                      color: AppColors.primaryBlack,
+                    ),
+                  ))
+                ],
+              ),
+              const SizedBox(
+                height: AppSpacing.small,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: ElevatedButton.icon(
+                    iconAlignment: IconAlignment.start,
+                    style: ElevatedButton.styleFrom(
+                      iconColor: AppColors.primaryWhite,
+                      backgroundColor: AppColors.primaryBlue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide.none,
+                      ),
+                    ),
+                    onPressed: () {},
+                    label: Text(
+                      'Sign In With Google',
+                      style: AppFontStyles.boldWhite13,
+                    ),
+                    icon: Icon(Icons.g_mobiledata_outlined),
+                  ))
+                ],
+              ),
             ],
           ),
         ),
