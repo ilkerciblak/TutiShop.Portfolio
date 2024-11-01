@@ -2,7 +2,7 @@ export 'config/_shared_config_exporter.dart';
 export 'enums/_shared_enum_exporter.dart';
 export 'exceptions/_shared_exceptions_exporter.dart';
 export 'extensions/_shared_extensions_exporter.dart';
-export 'networking/network_manager.dart';
+export 'networking/apis/_shared_apis_exporter.dart';
 export 'utils/_shared_utils_exporter.dart';
 export 'types/_shared_typedefs_exporter.dart';
 export 'theme/_shared_app_theme_exporter.dart';

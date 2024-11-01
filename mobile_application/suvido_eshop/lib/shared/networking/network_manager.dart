@@ -9,10 +9,12 @@ import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
 class NetworkManager {
   final String baseUrl;
   final Map<String, String> headers;
+  final int timeOut;
 
   NetworkManager({
     required this.baseUrl,
     this.headers = const {},
+    this.timeOut = 5,
   });
 
   Future<ExceptionEither<Map<String, dynamic>>> get({
@@ -21,9 +23,10 @@ class NetworkManager {
   }) async {
     Uri uri = Uri.parse(baseUrl);
     uri = uri.replace(
-      queryParameters: parameters,
       path: endPoint,
+      queryParameters: parameters,
     );
+
     var result = await _sendRequest(
       http.get(
         uri,
@@ -53,7 +56,7 @@ class NetworkManager {
   DataTask<Map<String, dynamic>> _sendRequest(Future<http.Response> request) {
     return TaskEither.tryCatch(
       () async {
-        final response = await request.timeout(const Duration(seconds: 10));
+        final response = await request.timeout(Duration(seconds: timeOut));
         return _handleResponse(response: response);
       },
       (error, stackTrace) {
