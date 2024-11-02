@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:suvido_eshop/presentation/onboarding/state/onboarding_state.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suvido_eshop/shared/services/shared_prefences.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit()
@@ -14,10 +16,13 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   late int pageCounter;
   late PageController pageController;
+  final SharedPrefencesService sharedPrefencesService =
+      GetIt.instance<SharedPrefencesService>();
 
   void initPage() {
     pageCounter = 0;
     pageController = PageController(initialPage: 0);
+    sharedPrefencesService.saveBool('knownUser', true);
     emitNewState();
   }
 
