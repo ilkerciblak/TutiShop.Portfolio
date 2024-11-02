@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:suvido_eshop/modules/user/domain/_user_domain_exporter.dart';
 import 'package:suvido_eshop/modules/user/presentation/login/bloc/login_state.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
+import 'package:suvido_eshop/shared/services/shared_prefences.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final IUserRepository userRepository = GetIt.instance<IUserRepository>();
@@ -17,8 +18,18 @@ class LoginCubit extends Cubit<LoginState> {
 
   late TextEditingController usernameController;
   late TextEditingController passwordController;
+  final SharedPrefencesService sharedPrefencesService =
+      GetIt.instance<SharedPrefencesService>();
 
   void initPage() {
+    var username = sharedPrefencesService.getString('username');
+    var password = sharedPrefencesService.getString('password');
+    emit(
+      state.copyWith(
+        username: username,
+        password: password,
+      ),
+    );
     usernameController = TextEditingController(text: state.username);
     passwordController = TextEditingController(text: state.password);
   }
@@ -42,6 +53,8 @@ class LoginCubit extends Cubit<LoginState> {
         );
       },
       (r) {
+        sharedPrefencesService.saveString('username', state.username);
+        sharedPrefencesService.saveString('password', state.password);
         GetIt.I.registerSingleton<User>(r);
         context.goNamed('home');
       },
