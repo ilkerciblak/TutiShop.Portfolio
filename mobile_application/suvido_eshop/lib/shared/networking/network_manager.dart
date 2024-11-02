@@ -47,6 +47,7 @@ class NetworkManager {
       http.post(
         uri,
         body: jsonEncode(body),
+        headers: {'Content-Type': 'application/json'},
       ),
     ).run();
 
@@ -66,6 +67,8 @@ class NetworkManager {
           );
         } else if (error is TimeoutException) {
           return NetworkException(errorCode: 408);
+        } else if (error is NetworkException) {
+          return error;
         }
 
         return NetworkException(
@@ -84,7 +87,9 @@ class NetworkManager {
 
     if (statusCode >= 400) {
       throw NetworkException(
-          errorCode: statusCode, errorMessage: response.body);
+        errorCode: statusCode,
+        errorMessage: jsonDecode(response.body)['message'],
+      );
     }
 
     return json.decode(response.body);

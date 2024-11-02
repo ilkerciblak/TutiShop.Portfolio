@@ -9,7 +9,7 @@ class DummyJsonApi {
   Future<ExceptionEither<Map<String, dynamic>>> authUser({
     required Map<String, dynamic> requestBody,
   }) async {
-    return networkManager.post(
+    return await networkManager.post(
       endPoint: EnvironmentVariables.dummyAuthLoginPath,
       body: requestBody,
     );
