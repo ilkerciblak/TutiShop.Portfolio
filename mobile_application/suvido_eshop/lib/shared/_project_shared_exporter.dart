@@ -7,3 +7,4 @@ export 'utils/_shared_utils_exporter.dart';
 export 'types/_shared_typedefs_exporter.dart';
 export 'theme/_shared_app_theme_exporter.dart';
 export 'widget/_shared_widget_exporter.dart';
+export 'services/_shared_services_exporter.dart';

@@ -5,7 +5,6 @@ import 'package:suvido_eshop/modules/user/data/service/auth_service.dart';
 import 'package:suvido_eshop/modules/user/domain/i_user_repository.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
 import 'package:suvido_eshop/shared/networking/network_manager.dart';
-import 'package:suvido_eshop/shared/services/shared_prefences.dart';
 
 final getIt = GetIt.instance;
 

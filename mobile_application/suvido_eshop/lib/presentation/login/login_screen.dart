@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:suvido_eshop/modules/user/presentation/login/bloc/login_state.dart';
-import 'package:suvido_eshop/modules/user/presentation/login/bloc/login_cubit.dart';
+import 'package:suvido_eshop/presentation/login/bloc/login_state.dart';
+import 'package:suvido_eshop/presentation/login/bloc/login_cubit.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
 
 class LoginScreen extends StatefulWidget {

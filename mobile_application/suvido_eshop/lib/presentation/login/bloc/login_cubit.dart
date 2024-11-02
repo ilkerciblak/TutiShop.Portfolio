@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suvido_eshop/modules/user/domain/_user_domain_exporter.dart';
-import 'package:suvido_eshop/modules/user/presentation/login/bloc/login_state.dart';
+import 'package:suvido_eshop/presentation/login/bloc/login_state.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
-import 'package:suvido_eshop/shared/services/shared_prefences.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final IUserRepository userRepository = GetIt.instance<IUserRepository>();

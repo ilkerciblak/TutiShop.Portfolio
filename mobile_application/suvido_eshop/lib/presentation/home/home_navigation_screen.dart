@@ -34,11 +34,11 @@ class _HomeNavigationScreenState extends State<HomeNavigationScreen> {
             onTap: cubit.onNavTap,
             items: [
               SalomonBottomBarItem(
-                icon: const Icon(Icons.shopping_cart),
+                icon: const Icon(Icons.shopping_bag),
                 title: const Text('Shop'),
               ),
               SalomonBottomBarItem(
-                icon: const Icon(Icons.shopping_bag),
+                icon: const Icon(Icons.shopping_cart),
                 title: const Text('Basket'),
               ),
               SalomonBottomBarItem(

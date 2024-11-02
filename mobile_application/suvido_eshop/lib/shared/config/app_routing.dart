@@ -1,9 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:suvido_eshop/modules/user/presentation/login/login_screen.dart';
 import 'package:suvido_eshop/presentation/_app_presentation_exporter.dart';
-import 'package:suvido_eshop/presentation/home/home_navigation_screen.dart';
-import 'package:suvido_eshop/shared/services/shared_prefences.dart';
+import 'package:suvido_eshop/shared/services/shared_prefences_service.dart';
 
 class AppRouting {
   static final GoRouter appRoutes = GoRouter(

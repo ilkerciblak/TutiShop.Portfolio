@@ -4,7 +4,6 @@ import 'package:get_it/get_it.dart';
 import 'package:suvido_eshop/presentation/onboarding/state/onboarding_state.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:suvido_eshop/shared/services/shared_prefences.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit()
