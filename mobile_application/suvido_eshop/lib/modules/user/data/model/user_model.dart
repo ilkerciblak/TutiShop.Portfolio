@@ -6,7 +6,7 @@ import 'package:suvido_eshop/modules/user/data/model/payment_method_model.dart';
 import 'package:suvido_eshop/modules/user/domain/user.dart';
 
 class UserModel {
-  final String identifier;
+  final int identifier;
   final String firstName;
   final String lastName;
   final String email;
@@ -24,7 +24,7 @@ class UserModel {
   });
 
   UserModel copyWith({
-    String? identifier,
+    int? identifier,
     String? firstName,
     String? lastName,
     String? email,
@@ -57,14 +57,13 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      identifier: map['identifier'] as String,
+      identifier: map['identifier'] ?? map['id'],
       firstName: map['firstName'] as String,
       lastName: map['lastName'] as String,
       email: map['email'] as String,
       username: map['username'] as String,
-      paymentMethod: PaymentMethodModel.fromMap(
-          map['paymentMethod'] as Map<String, dynamic>),
-      address: AddressModel.fromMap(map['address'] as Map<String, dynamic>),
+      paymentMethod: PaymentMethodModel.initial(),
+      address: AddressModel.initial(),
     );
   }
 
@@ -74,7 +73,7 @@ class UserModel {
       UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   User toEntity() => User(
-        identifier: identifier,
+        identifier: identifier.toString(),
         firstName: firstName,
         lastName: lastName,
         email: email,

@@ -82,6 +82,13 @@ class AddressModel {
     );
   }
 
+  factory AddressModel.initial() => AddressModel(
+      country: "country",
+      city: "city",
+      state: "state",
+      postalCode: "postalCode",
+      address: "address");
+
   Address toEntity() => Address(
         country: country,
         city: city,

@@ -41,6 +41,9 @@ class PaymentMethodModel {
     );
   }
 
+  factory PaymentMethodModel.initial() => PaymentMethodModel(
+      cardNumber: "cardNumber", cardType: "cardType", cardExpire: "cardExpire");
+
   String toJson() => json.encode(toMap());
 
   factory PaymentMethodModel.fromJson(String source) =>

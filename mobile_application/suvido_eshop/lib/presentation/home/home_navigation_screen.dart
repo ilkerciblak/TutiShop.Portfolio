@@ -26,12 +26,9 @@ class _HomeNavigationScreenState extends State<HomeNavigationScreen> {
       bloc: cubit,
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            title: const Text('Shoppiri'),
-          ),
           bottomNavigationBar: SalomonBottomBar(
             currentIndex: state,
-            backgroundColor: AppColors.primaryLightGreen,
+            backgroundColor: AppColors.primaryBlack,
             selectedItemColor: AppColors.primaryWhite,
             unselectedItemColor: AppColors.primaryWhite.withOpacity(0.5),
             onTap: cubit.onNavTap,
