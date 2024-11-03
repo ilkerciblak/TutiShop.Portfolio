@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:suvido_eshop/modules/catalog/_catalog_feature_exporter.dart';
 import 'package:suvido_eshop/modules/user/data/repository/user_repository.dart';
 import 'package:suvido_eshop/modules/user/data/service/auth_service.dart';
 import 'package:suvido_eshop/modules/user/domain/i_user_repository.dart';
@@ -34,6 +35,29 @@ Future<void> initProject() async {
     final prefs = await SharedPreferences.getInstance();
     return SharedPrefencesService(prefences: prefs);
   });
+
+  getIt.registerSingleton<ProductService>(
+    ProductService(
+      api: getIt<DummyJsonApi>(),
+    ),
+  );
+
+  getIt.registerSingleton<CategoryService>(
+    CategoryService(
+      api: getIt<DummyJsonApi>(),
+    ),
+  );
+
+  getIt.registerSingleton<IProductRepository>(
+    ProductRepository(
+      productService: getIt<ProductService>(),
+    ),
+  );
+  getIt.registerSingleton<ICategoryRepository>(
+    CategoryRepository(
+      categoryService: getIt<CategoryService>(),
+    ),
+  );
 
   await getIt.allReady();
 }
