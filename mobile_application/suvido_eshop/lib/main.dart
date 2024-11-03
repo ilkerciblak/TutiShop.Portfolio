@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
-import 'package:suvido_eshop/shared/config/init.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: AppRouting.appRoutes,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Merriweather',
         focusColor: AppColors.primaryDarkGreen,

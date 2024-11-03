@@ -1,4 +1,4 @@
-import 'package:suvido_eshop/modules/user/data/model/user_model.dart';
+import 'package:suvido_eshop/modules/user/data/model/_user_model_exporter.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
 
 class AuthService {
@@ -18,7 +18,15 @@ class AuthService {
     );
 
     return response.map(
-      (data) => UserModel.fromMap(data),
+      (data) => UserModel(
+        identifier: data['id'] ?? 0,
+        firstName: data['firstName'] ?? '',
+        lastName: data['lastName'] ?? '',
+        email: data['email'] ?? '',
+        username: data['username'] ?? '',
+        paymentMethod: data['paymentMethod'] ?? PaymentMethodModel.initial(),
+        address: data['address'] ?? AddressModel.initial(),
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:get_it/get_it.dart';
 import 'package:suvido_eshop/modules/user/domain/address.dart';
 import 'package:suvido_eshop/modules/user/domain/payment_method.dart';
 
@@ -62,4 +63,6 @@ class User {
         paymentMethod.hashCode ^
         address.hashCode;
   }
+
+  User get i => GetIt.instance<User>();
 }
