@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'package:collection/collection.dart';
+import 'package:suvido_eshop/modules/catalog/domain/_catalog_domain_exporter.dart';
 
-class Product {
+class ProductModel {
   final int identifier;
   final int categoryId;
   final String title;
@@ -11,8 +13,7 @@ class Product {
   final int stock;
   final String thumbnail;
   final List<String> images;
-
-  Product({
+  ProductModel({
     required this.identifier,
     required this.categoryId,
     required this.title,
@@ -25,7 +26,7 @@ class Product {
     required this.images,
   });
 
-  Product copyWith({
+  ProductModel copyWith({
     int? identifier,
     int? categoryId,
     String? title,
@@ -37,7 +38,7 @@ class Product {
     String? thumbnail,
     List<String>? images,
   }) {
-    return Product(
+    return ProductModel(
       identifier: identifier ?? this.identifier,
       categoryId: categoryId ?? this.categoryId,
       title: title ?? this.title,
@@ -51,8 +52,60 @@ class Product {
     );
   }
 
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'identifier': identifier,
+      'categoryId': categoryId,
+      'title': title,
+      'description': description,
+      'categoryName': categoryName,
+      'price': price,
+      'rating': rating,
+      'stock': stock,
+      'thumbnail': thumbnail,
+      'images': images,
+    };
+  }
+
+  factory ProductModel.fromMap(Map<String, dynamic> map) {
+    return ProductModel(
+      identifier: map['identifier'] as int,
+      categoryId: map['categoryId'] as int,
+      title: map['title'] as String,
+      description: map['description'] as String,
+      categoryName: map['categoryName'] as String,
+      price: map['price'] as double,
+      rating: map['rating'] as double,
+      stock: map['stock'] as int,
+      thumbnail: map['thumbnail'] as String,
+      images: List<String>.from(
+        (map['images'] as List<String>),
+      ),
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory ProductModel.fromJson(String source) =>
+      ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  Product toEntity() {
+    return Product(
+      identifier: identifier,
+      categoryId: categoryId,
+      title: title,
+      description: description,
+      categoryName: categoryName,
+      price: price,
+      rating: rating,
+      stock: stock,
+      thumbnail: thumbnail,
+      images: images,
+    );
+  }
+
   @override
-  bool operator ==(covariant Product other) {
+  bool operator ==(covariant ProductModel other) {
     if (identical(this, other)) return true;
     final listEquals = const DeepCollectionEquality().equals;
 
