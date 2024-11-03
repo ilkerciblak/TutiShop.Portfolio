@@ -92,6 +92,16 @@ class NetworkManager {
       );
     }
 
-    return json.decode(response.body);
+    var decoded = json.decode(response.body);
+
+    if (decoded is Map<String, dynamic>) {
+      return decoded;
+    } else if (decoded is List<dynamic>) {
+      return {'list': decoded};
+    } else {
+      throw NetworkException(
+          errorCode: 0,
+          errorMessage: 'Beklenmedik veri tipi, ${decoded.runtimeType}');
+    }
   }
 }

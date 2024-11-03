@@ -11,13 +11,15 @@ class CategoryService {
     var response = await api.getCategories(parameters: parameters);
 
     return response.map(
-      (data) => (data as List<Map<String, dynamic>>).map(
-        (category) => CategoryModel(
-          identifier: category['id'] ?? 0,
-          title: category['title'] ?? category['name'] ?? 'Zottiri',
-          slug: category['slug'] ?? 'SlugZottiri',
-        ),
-      ) as List<CategoryModel>,
+      (data) => (data['list'] as List<dynamic>)
+          .map(
+            (category) => CategoryModel(
+              identifier: category['id'] ?? 0,
+              title: category['title'] ?? category['name'] ?? 'Zottiri',
+              slug: category['slug'] ?? 'SlugZottiri',
+            ),
+          )
+          .toList(),
     );
   }
 }

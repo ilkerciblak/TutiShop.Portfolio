@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:suvido_eshop/modules/catalog/domain/_catalog_domain_exporter.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
@@ -20,7 +19,12 @@ class CategoryFilterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChoiceChip(
-      selected: false,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          20,
+        ),
+      ),
+      selected: isSelected,
       onSelected: (value) {
         onSelected(category.slug);
       },
@@ -28,15 +32,15 @@ class CategoryFilterButton extends StatelessWidget {
         color: primaryColor,
       ),
       selectedColor: primaryColor,
-      labelStyle: AppFontStyles.boldWhite13.copyWith(
-        fontSize: 9,
-      ),
       backgroundColor: Colors.transparent,
+      checkmarkColor: AppColors.primaryWhite,
       label: Text(
         category.title,
-        style: AppFontStyles.boldBlack13.copyWith(
-          fontSize: 9,
-        ),
+        style: isSelected
+            ? AppFontStyles.boldWhite13.copyWith(fontSize: 13)
+            : AppFontStyles.boldBlack13.copyWith(
+                fontSize: 13,
+              ),
       ),
     );
   }

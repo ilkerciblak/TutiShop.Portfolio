@@ -14,7 +14,9 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
   ShopScreenCubit()
       : super(
           ShopScreenState.initial(),
-        );
+        ) {
+    initPage();
+  }
 
   void initPage() {
     getCategories();
@@ -52,5 +54,9 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
     );
   }
 
-  void onCategorySelected(String slug) {}
+  void onCategorySelected(String slug, int index) {
+    emit(state.copyWith(
+      selectedCategory: index,
+    ));
+  }
 }
