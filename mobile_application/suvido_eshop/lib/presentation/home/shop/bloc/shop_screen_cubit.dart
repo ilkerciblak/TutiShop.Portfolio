@@ -20,6 +20,7 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
 
   void initPage() {
     getCategories();
+    getProducts();
   }
 
   void getCategories() async {
@@ -36,6 +37,7 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
         print(l);
       },
       (categoryList) {
+        categoryList.insert(0, Category(identifier: 0, title: 'All', slug: ''));
         emit(
           state.copyWith(
             categoryStatus: FetchStatus.success,
@@ -46,11 +48,26 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
     );
   }
 
-  void getProducts() {
+  void getProducts() async {
     emit(
       state.copyWith(
         productStatus: FetchStatus.loading,
       ),
+    );
+
+    var response = await productRepository
+        .getAllProducts(parameters: {'select': "title,price,images"}).run();
+
+    response.fold(
+      (l) {
+        print(l);
+      },
+      (r) {
+        emit(state.copyWith(
+          productStatus: FetchStatus.success,
+          productList: r,
+        ));
+      },
     );
   }
 

@@ -12,20 +12,24 @@ class ProductService {
     var response = await api.getProducts(parameters: parameters);
 
     return response.map(
-      (data) => (data['products'] as List<Map<String, dynamic>>).map(
-        (product) => ProductModel(
-          identifier: product['id'] ?? 0,
-          categoryId: product['categoryId'] ?? 0,
-          title: product['title'] ?? '',
-          description: product['description'] ?? '',
-          categoryName: product['category'] ?? '',
-          price: product['price'] ?? 0.0,
-          rating: product['rating'] ?? 0.0,
-          stock: product['stock'] ?? 0,
-          thumbnail: product['thumbnail'] ?? '',
-          images: product['images'] ?? '',
-        ),
-      ) as List<ProductModel>,
+      (data) => (data['products'] as List<dynamic>)
+          .map(
+            (product) => ProductModel(
+              identifier: product['id'] ?? 0,
+              categoryId: product['categoryId'] ?? 0,
+              title: product['title'] ?? '',
+              description: product['description'] ?? '',
+              categoryName: product['category'] ?? '',
+              price: product['price'] ?? 0.0,
+              rating: product['rating'] ?? 0.0,
+              stock: product['stock'] ?? 0,
+              thumbnail: product['thumbnail'] ?? '',
+              images: (product['images'] as List<dynamic>)
+                  .map((x) => x.toString())
+                  .toList(),
+            ),
+          )
+          .toList(),
     );
   }
 

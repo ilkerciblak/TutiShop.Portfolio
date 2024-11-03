@@ -39,7 +39,7 @@ class ShopScreenState {
         productList: [],
         categoryStatus: FetchStatus.idle,
         productStatus: FetchStatus.idle,
-        selectedCategory: 100,
+        selectedCategory: 0,
       );
 
   @override

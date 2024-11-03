@@ -28,7 +28,7 @@ class _HomeNavigationScreenState extends State<HomeNavigationScreen> {
       builder: (context, state) {
         return Scaffold(
           body: [
-            ShopScreen(),
+            const ShopScreen(),
             Container(),
             Container(),
           ][state],
