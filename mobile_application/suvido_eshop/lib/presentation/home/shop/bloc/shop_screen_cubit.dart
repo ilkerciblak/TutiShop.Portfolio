@@ -26,17 +26,13 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
   void getCategories() async {
     emit(
       state.copyWith(
-          categoryStatus: FetchStatus.loading,
-          categoryList: List.generate(
-            10,
-            (index) => Category(identifier: 0, title: "", slug: ""),
-          )),
+        categoryStatus: FetchStatus.loading,
+      ),
     );
 
     await Future.delayed(const Duration(seconds: 1));
 
     var response = await categoryRepository.getCategories().run();
-
     response.fold(
       (l) {
         print(l);

@@ -13,38 +13,32 @@ class ProductListLoadingComponent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Stack(
-            children: [
-              AspectRatio(
-                aspectRatio: 1,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.grey[300],
-                  ),
-                ),
+          AspectRatio(
+            aspectRatio: 1,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: AppColors.primaryGrey,
               ),
-              const Positioned(
-                top: 8,
-                right: 8,
-                child: Icon(
-                  Icons.favorite_border,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
+            ),
           ),
           const SizedBox(height: 8),
           Container(
             width: 100, // Adjust width as needed
             height: 15,
-            color: Colors.grey[300],
+            decoration: BoxDecoration(
+              color: AppColors.primaryGrey,
+              borderRadius: BorderRadius.circular(17),
+            ),
           ),
           const SizedBox(height: 4),
           Container(
             width: 50, // Adjust width as needed
             height: 12,
-            color: Colors.grey[300],
+            decoration: BoxDecoration(
+              color: AppColors.primaryGrey,
+              borderRadius: BorderRadius.circular(17),
+            ),
           ),
         ],
       ),

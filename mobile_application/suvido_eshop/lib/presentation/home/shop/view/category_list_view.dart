@@ -17,23 +17,33 @@ class CategoryListView extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
-        children: cubit.state.categoryList.indexed
-            .map(
-              (category) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 3.0),
-                child: switch (cubit.state.categoryStatus) {
-                  FetchStatus.success => CategoryFilterButton(
-                      category: category.$2,
-                      onSelected: (categoryName) =>
-                          cubit.onCategorySelected(categoryName, category.$1),
-                      isSelected: cubit.state.selectedCategory == category.$1,
-                    ),
-                  _ => const CategoryFilterLoading()
-                },
-              ),
-            )
-            .toList(),
+        children: buildComponent(),
       ),
     );
+  }
+
+  List<Widget> buildComponent() {
+    return switch (cubit.state.categoryStatus) {
+      FetchStatus.success => cubit.state.categoryList.indexed
+          .map(
+            (category) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 3),
+              child: CategoryFilterButton(
+                category: category.$2,
+                onSelected: (categoryName) =>
+                    cubit.onCategorySelected(categoryName, category.$1),
+                isSelected: cubit.state.selectedCategory == category.$1,
+              ),
+            ),
+          )
+          .toList(),
+      _ => List.generate(
+          11,
+          (index) => const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 3),
+            child: CategoryFilterLoading(),
+          ),
+        ),
+    };
   }
 }
