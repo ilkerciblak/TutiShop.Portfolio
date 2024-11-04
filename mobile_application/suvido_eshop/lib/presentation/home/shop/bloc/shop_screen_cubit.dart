@@ -61,7 +61,7 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
       ),
     );
     dynamic response;
-    Map<String, String> parameters = {'select': "id,title,price,images"};
+    Map<String, String> parameters = {'select': "id,title,price,images,"};
 
     if (slug != null && slug.isNotEmpty) {
       response = await productRepository

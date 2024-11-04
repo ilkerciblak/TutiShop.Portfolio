@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:suvido_eshop/modules/catalog/domain/_catalog_domain_exporter.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductListComponent extends StatelessWidget {
   final Product product;
@@ -24,9 +25,10 @@ class ProductListComponent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   color: const Color(0xFFF5F5F5),
                 ),
-                child: Image.network(
-                  product.images.first,
-                  fit: BoxFit.fitHeight,
+                child: CachedNetworkImage(
+                  imageUrl: product.images.first,
+                  fadeInCurve: Easing.linear,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
