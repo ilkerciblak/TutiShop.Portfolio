@@ -31,7 +31,7 @@ Interview project repository for a simplistic e-shop application with following 
 
     - [ ] Next Todos
         - [ ] Implement Cached Network Image Package 
-        - [ ] Implement Shimmer Effect for loading status
+        - [x] Implement Shimmer Effect for loading status
         - [ ] Implement Error Statuses
         - [ ] Implement Category Filter
         - [ ] Go on to Basket Feature

@@ -26,9 +26,14 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
   void getCategories() async {
     emit(
       state.copyWith(
-        categoryStatus: FetchStatus.loading,
-      ),
+          categoryStatus: FetchStatus.loading,
+          categoryList: List.generate(
+            10,
+            (index) => Category(identifier: 0, title: "", slug: ""),
+          )),
     );
+
+    await Future.delayed(const Duration(seconds: 2));
 
     var response = await categoryRepository.getCategories().run();
 
@@ -51,8 +56,21 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
   void getProducts() async {
     emit(
       state.copyWith(
-        productStatus: FetchStatus.loading,
-      ),
+          productStatus: FetchStatus.loading,
+          productList: List.generate(
+              10,
+              (index) => Product(
+                    identifier: 1,
+                    categoryId: 1,
+                    title: '',
+                    description: '',
+                    categoryName: '',
+                    price: 5,
+                    rating: 5,
+                    stock: 5,
+                    thumbnail: '',
+                    images: [''],
+                  ))),
     );
 
     var response = await productRepository

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suvido_eshop/modules/catalog/_catalog_feature_exporter.dart';
+import 'package:suvido_eshop/modules/catalog/presentation/product/view/product_list_loading_component.dart';
 import 'package:suvido_eshop/presentation/home/shop/bloc/shop_screen_cubit.dart';
 import 'package:suvido_eshop/presentation/home/shop/bloc/shop_screen_state.dart';
 import 'package:suvido_eshop/presentation/home/shop/view/_shop_view_exporter.dart';
@@ -54,10 +55,13 @@ class _ShopScreenState extends State<ShopScreen> {
             builder: (context, state) => SliverGrid(
               delegate: SliverChildBuilderDelegate(
                 childCount: cubit.state.productList.length,
-                (context, index) {
-                  return cubit.state.productList
+                (context, index) => switch (state.productStatus) {
+                  FetchStatus.success => cubit.state.productList
                       .map((product) => ProductListComponent(product: product))
-                      .toList()[index];
+                      .toList()[index],
+                  _ => cubit.state.productList
+                      .map((product) => ProductListLoadingComponent())
+                      .toList()[index]
                 },
               ),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

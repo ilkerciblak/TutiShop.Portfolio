@@ -21,7 +21,7 @@ dependencies:
   # hive: ^2.2.3
 
   # ui
-  shimmer_pro: ^0.0.6
+  shimmer: ^3.0.0
   salomon_bottom_bar: ^3.3.2
   cupertino_icons: ^1.0.8
   collection: ^1.18.0
