@@ -20,7 +20,7 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
 
   void initPage() {
     getCategories();
-    getProducts();
+    getAllProducts();
   }
 
   void getCategories() async {
@@ -33,7 +33,7 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
           )),
     );
 
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     var response = await categoryRepository.getCategories().run();
 
@@ -53,28 +53,28 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
     );
   }
 
-  void getProducts() async {
+  void onCategorySelected(String slug, int index) async {
+    getAllProducts(slug: slug, index: index);
+  }
+
+  void getAllProducts({String? slug, int? index}) async {
     emit(
       state.copyWith(
-          productStatus: FetchStatus.loading,
-          productList: List.generate(
-              10,
-              (index) => Product(
-                    identifier: 1,
-                    categoryId: 1,
-                    title: '',
-                    description: '',
-                    categoryName: '',
-                    price: 5,
-                    rating: 5,
-                    stock: 5,
-                    thumbnail: '',
-                    images: [''],
-                  ))),
+        selectedCategory: index,
+        productStatus: FetchStatus.loading,
+      ),
     );
+    dynamic response;
+    Map<String, String> parameters = {'select': "id,title,price,images"};
 
-    var response = await productRepository
-        .getAllProducts(parameters: {'select': "title,price,images"}).run();
+    if (slug != null && slug.isNotEmpty) {
+      response = await productRepository
+          .getProductsByCategory(categoryName: slug, parameters: parameters)
+          .run();
+    } else {
+      response =
+          await productRepository.getAllProducts(parameters: parameters).run();
+    }
 
     response.fold(
       (l) {
@@ -87,11 +87,5 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
         ));
       },
     );
-  }
-
-  void onCategorySelected(String slug, int index) {
-    emit(state.copyWith(
-      selectedCategory: index,
-    ));
   }
 }
