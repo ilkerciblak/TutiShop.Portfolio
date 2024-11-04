@@ -25,6 +25,19 @@ class Product {
     required this.images,
   });
 
+  factory Product.def() => Product(
+        identifier: 0,
+        categoryId: 0,
+        title: '0',
+        description: '0',
+        categoryName: '0',
+        price: 0,
+        rating: 0,
+        stock: 0,
+        thumbnail: '',
+        images: List.empty(),
+      );
+
   Product copyWith({
     int? identifier,
     int? categoryId,

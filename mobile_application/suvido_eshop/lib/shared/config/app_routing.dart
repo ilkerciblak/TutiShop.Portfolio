@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suvido_eshop/modules/catalog/presentation/_catalog_presentation_exporter.dart';
 import 'package:suvido_eshop/presentation/_app_presentation_exporter.dart';
 import 'package:suvido_eshop/shared/services/shared_prefences_service.dart';
 
@@ -28,6 +29,13 @@ class AppRouting {
         path: '/home',
         name: 'home',
         builder: (context, state) => const HomeNavigationScreen(),
+      ),
+      GoRoute(
+        path: '/products/:id',
+        name: 'product-detail',
+        builder: (context, state) => ProductDetailScreen(
+          productId: int.parse(state.pathParameters['id']!),
+        ),
       )
     ],
   );

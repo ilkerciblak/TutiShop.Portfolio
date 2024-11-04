@@ -79,7 +79,8 @@ class ProductService {
         rating: data['rating'] ?? 0.0,
         stock: data['stock'] ?? 0,
         thumbnail: data['thumbnail'] ?? '',
-        images: data['images'] ?? '',
+        images:
+            (data['images'] as List<dynamic>).map((x) => x.toString()).toList(),
       ),
     );
   }
