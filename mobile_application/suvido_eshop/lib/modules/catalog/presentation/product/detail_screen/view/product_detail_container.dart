@@ -58,6 +58,43 @@ class ProductDetailContainer extends StatelessWidget {
             product.description,
             style: AppFontStyles.regularBlack15,
           ),
+          const SizedBox(height: AppSpacing.small),
+          const Row(
+            children: [Expanded(child: Divider())],
+          ),
+          const SizedBox(height: AppSpacing.small),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Total Price',
+                    style: AppFontStyles.regularBlack13,
+                  ),
+                  const SizedBox(
+                    height: AppSpacing.tiny,
+                  ),
+                  Text(
+                    '${product.price} \$',
+                    style: AppFontStyles.boldBlack21,
+                  ),
+                ],
+              ),
+              const SizedBox(width: AppSpacing.medium),
+              Expanded(
+                child: ElevatedStatefullButton(
+                  btnText: 'Add to Cart',
+                  onTap: () {},
+                  status: FetchStatus.idle,
+                  backgroundColor: AppColors.primaryBlack,
+                ),
+              )
+            ],
+          )
         ],
       ),
     );
