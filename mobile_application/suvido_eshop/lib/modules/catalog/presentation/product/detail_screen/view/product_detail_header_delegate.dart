@@ -1,18 +1,16 @@
 import 'dart:math';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
-import 'package:go_router/go_router.dart';
+import 'package:suvido_eshop/modules/catalog/presentation/product/detail_screen/view/product_detail_header_content.dart';
 
-class ProductImageHeader implements SliverPersistentHeaderDelegate {
+class ProductImageHeaderDelegate implements SliverPersistentHeaderDelegate {
   @override
   final double maxExtent;
   @override
   final double minExtent;
-  final String imgUrl;
+  final List<String> imgUrl;
 
-  ProductImageHeader({
+  ProductImageHeaderDelegate({
     required this.maxExtent,
     required this.minExtent,
     required this.imgUrl,
@@ -21,28 +19,7 @@ class ProductImageHeader implements SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        CachedNetworkImage(
-          imageUrl: imgUrl,
-          fadeInCurve: Easing.linear,
-          fit: BoxFit.fill,
-        ),
-        Positioned(
-          left: 16.0,
-          top: 16.0,
-          child: IconButton(
-              onPressed: () {
-                context.pop();
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: AppColors.primaryBlack,
-              )),
-        ),
-      ],
-    );
+    return ProductDetailHeaderContent(imgUrl: imgUrl);
   }
 
   double titleOpacity(double shrinkOffset) {
