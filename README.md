@@ -30,10 +30,11 @@ Interview project repository for a simplistic e-shop application with following 
             - [ ] Hive Repo
 
     - [ ] Next Todos
-        - [ ] Implement Cached Network Image Package 
+        - [x] Implement Cached Network Image Package 
         - [x] Implement Shimmer Effect for loading status
+        - [x] Implement Category Filter
+        - [x] Implement Product Detail Logic and UI
         - [ ] Implement Error Statuses
-        - [ ] Implement Category Filter
         - [ ] Go on to Basket Feature
 ## Project Structure
 
@@ -94,6 +95,8 @@ $ flutter run
 ### :white_small_square: Resources and Acknowledgements
 - [Medium - Flutter Architectures Deep Dive](https://medium.com/@yusrasajjad613/architecture-patterns-in-flutter-an-in-depth-guide-0ca2d65c723c)
 
+- [Medium - Optimizing Network Images in Flutter](https://medium.com/make-android/save-your-memory-usage-by-optimizing-network-image-in-flutter-cbc9f8af47cd)
+
 - [A Reddit Discussion on Flutter Architectures](https://www.reddit.com/r/FlutterDev/comments/192h8l0/how_do_you_architect_your_flutter_apps_research/)
 
 - [Flutter Singleton pattern and Get-it](https://salmanbediya-medium-com.translate.goog/getit-simplifying-dependency-injection-with-service-locator-pattern-in-dart-and-flutter-62a2d7d105b8?_x_tr_sl=en&_x_tr_tl=tr&_x_tr_hl=tr&_x_tr_pto=tc&_x_tr_hist=true)
@@ -101,4 +104,3 @@ $ flutter run
 - [UI Inspirations](https://dribbble.com/)
 
 - [Public APIs Repository on GitHub](https://github.com/public-apis/public-apis?tab=readme-ov-file#shopping)
-
