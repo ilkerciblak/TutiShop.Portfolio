@@ -10,6 +10,8 @@ Interview project repository for a simplistic e-shop application with following 
     - There should be a maximum cost limit for basket, whether this limit is exceeded application should suggest the best viable product to drop in order to catch the limit
         - Priority should be given to removing more than one in the same category from the basket
 
+
+
 ### Project Roadmap
 - [ ] Mobile Application
     - [x] Construct Project Core (Shared)
@@ -30,10 +32,10 @@ Interview project repository for a simplistic e-shop application with following 
             - [ ] Hive Repo
 
     - [ ] Next Todos
-        - [x] Implement Cached Network Image Package 
-        - [x] Implement Shimmer Effect for loading status
-        - [x] Implement Category Filter
-        - [x] Implement Product Detail Logic and UI
+        - [ ] Secure Shared Preferences
+        - [ ] Secure Shared Preferences implementation on Authentication
+        - [ ] Authentication Consumer Flow that Based on Refresh Token
+            - Auth Manager tekil bir sey degil her sikko servis icin bir manager kullandik  
         - [ ] Implement Error Statuses
         - [ ] Go on to Basket Feature
 ## Project Structure
@@ -70,7 +72,7 @@ later
 
 Clone the project
 ```bash
-$ git clone https://github.com/ilkerciblak/suvido.interview.git
+$ git clone https://github.com/ilkerciblak/TutiShop.Portfolio.git
 ```
 
 Go to the Mobile Application Directory
