@@ -1,1 +1,1 @@
-export 'shared_prefences_service.dart';
+export 'shared_preferences/shared_prefences_service.dart';

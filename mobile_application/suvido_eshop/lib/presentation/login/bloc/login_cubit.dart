@@ -2,13 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:suvido_eshop/modules/user/_user_module_exporter.dart';
 
 import 'package:suvido_eshop/presentation/login/bloc/login_state.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  final IUserRepository userRepository = GetIt.instance<IUserRepository>();
+  final AuthManager authManager =
+      GetIt.instance<AuthManager>(instanceName: 'dummyAuthManager');
   LoginCubit()
       : super(
           LoginState.initial(),
@@ -40,7 +40,7 @@ class LoginCubit extends Cubit<LoginState> {
         status: FetchStatus.loading,
       ),
     );
-    var response = await userRepository
+    var response = await authManager
         .login(username: state.username, password: state.password)
         .run();
     response.fold(
@@ -48,14 +48,14 @@ class LoginCubit extends Cubit<LoginState> {
         emit(
           state.copyWith(
             status: FetchStatus.failed,
-            errorMessage: (l as NetworkException).errorMessage,
+            errorMessage: l.toString(),
           ),
         );
       },
       (r) {
+        // TODO: More secure structure
         sharedPrefencesService.saveString('username', state.username);
         sharedPrefencesService.saveString('password', state.password);
-        GetIt.I.registerSingleton<User>(r);
         context.goNamed('home');
       },
     );

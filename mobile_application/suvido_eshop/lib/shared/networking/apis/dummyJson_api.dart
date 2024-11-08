@@ -15,6 +15,15 @@ class DummyJsonApi {
     );
   }
 
+  Future<ExceptionEither<Map<String, dynamic>>> refreshAuth({
+    required Map<String, dynamic> requestBody,
+  }) async {
+    return await networkManager.post(
+      endPoint: EnvironmentVariables.dummyAuthLoginPath,
+      body: requestBody,
+    );
+  }
+
   Future<ExceptionEither<Map<String, dynamic>>> getProducts({
     Map<String, String>? parameters = const {},
   }) async {

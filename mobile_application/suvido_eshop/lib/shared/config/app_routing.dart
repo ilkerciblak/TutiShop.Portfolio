@@ -2,11 +2,21 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suvido_eshop/modules/catalog/presentation/_catalog_presentation_exporter.dart';
 import 'package:suvido_eshop/presentation/_app_presentation_exporter.dart';
-import 'package:suvido_eshop/shared/services/shared_prefences_service.dart';
+import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
+import 'package:suvido_eshop/shared/enums/authentication_status.dart';
 
 class AppRouting {
   static final GoRouter appRoutes = GoRouter(
     initialLocation: '/',
+    redirect: (context, state) {
+      switch (GetIt.instance<Authentication>().authenticationStatus) {
+        case AuthenticationStatus.authenticated:
+          return null;
+
+        default:
+          return '/login';
+      }
+    },
     routes: [
       GoRoute(
         path: '/',
