@@ -1,14 +1,16 @@
 # suvido.interview
-Interview project repository for a simplistic e-shop application with following instructions
 
-### Project Instructions
-- Features are : Product, Categories and Basket where
-    - Each product should have at least one category
-    - Basket should be avaliable when application is offline
-    - On Basket Screen, products should be shown seperated by their categories
-    - For each product added from the same category, other products in the basket should be discounted by 5%.
-    - There should be a maximum cost limit for basket, whether this limit is exceeded application should suggest the best viable product to drop in order to catch the limit
-        - Priority should be given to removing more than one in the same category from the basket
+An experimental project repository that will include a Asp.Net API Project with Microservice or Modular Monolith Architecture and a Mobile Application built with Flutter Framework also with Clean Architecture.
+
+
+
+### Project Scope and Purpose
+First of all, main goal of the project is practicing Design Patterns and some development technologies. Actually, mobile application and API projects have different goals to be achieved.
+
+-   To develop an flutter template repository using this project as an experimental project
+-   To develop an portfolio project for both backend and frontend technologies
+-   To develop a backend project to improve backend skills
+
 
 
 
@@ -38,10 +40,14 @@ Interview project repository for a simplistic e-shop application with following 
             - Auth Manager tekil bir sey degil her sikko servis icin bir manager kullandik  
         - [ ] Implement Error Statuses
         - [ ] Go on to Basket Feature
-## Project Structure
+# Project Structure
 
+## Mobile Application
 
-### :white_small_square: Project Scope and System Design Description
+> [!Note]
+> This part will be transferred to mobile_application's readme file.
+
+### :white_small_square: System Design Description
 
 <!-- TODO --> 
 
