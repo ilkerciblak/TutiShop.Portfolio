@@ -20,6 +20,7 @@ class NetworkManager {
   Future<ExceptionEither<Map<String, dynamic>>> get({
     required String endPoint,
     Map<String, String>? parameters = const {},
+    Map<String, String>? headers = const {},
   }) async {
     Uri uri = Uri.parse(baseUrl);
     uri = uri.replace(

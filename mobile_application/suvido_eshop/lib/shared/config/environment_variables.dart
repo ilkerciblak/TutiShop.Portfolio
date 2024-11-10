@@ -6,4 +6,5 @@ class EnvironmentVariables {
   static const dummyProductByCategoryPath = "/products/category/:categoryName";
   static const dummyAuthLoginPath = "/auth/login";
   static const dummyAuthRefreshPath = "/auth/refresh";
+  static const dummyGetCurrentUser = "/user/me";
 }

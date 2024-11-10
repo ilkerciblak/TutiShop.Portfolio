@@ -1,7 +1,8 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:suvido_eshop/modules/user/domain/user.dart';
+import 'package:suvido_eshop/modules/user/_user_module_exporter.dart';
 
 abstract class IUserRepository {
-  TaskEither<Exception, User> login(
-      {required String username, required String password});
+  TaskEither<Exception, User> getCurrentUser({
+    required String accessToken,
+  });
 }

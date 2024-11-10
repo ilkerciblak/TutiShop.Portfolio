@@ -24,6 +24,15 @@ class DummyJsonApi {
     );
   }
 
+  Future<ExceptionEither<Map<String, dynamic>>> getCurrentUser({
+    required Map<String, String> requestHeaders,
+  }) async {
+    return await networkManager.get(
+      endPoint: EnvironmentVariables.dummyGetCurrentUser,
+      headers: requestHeaders,
+    );
+  }
+
   Future<ExceptionEither<Map<String, dynamic>>> getProducts({
     Map<String, String>? parameters = const {},
   }) async {

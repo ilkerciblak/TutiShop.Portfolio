@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:suvido_eshop/modules/catalog/_catalog_feature_exporter.dart';
+import 'package:suvido_eshop/modules/user/user_module_registrar.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
 import 'package:suvido_eshop/shared/config/init_shared_services.dart';
 
@@ -7,6 +8,8 @@ final getIt = GetIt.instance;
 
 Future<void> initProject() async {
   await initSharedServices();
+
+  await registerUserDomain();
 
   getIt.registerSingleton<ProductService>(
     ProductService(
