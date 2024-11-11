@@ -1,8 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:get_it/get_it.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
-import 'package:suvido_eshop/shared/authentication/_authentication_exporter.dart';
-import 'package:suvido_eshop/shared/authentication/interfaces/i_auth_service.dart';
 
 class AuthManager {
   final IAuthService authService;
