@@ -4,22 +4,22 @@ import 'package:suvido_eshop/shared/services/encryption/encryipter_mode.dart';
 
 class EncryptionManager {
   final String secureKey;
-  final EncryipterMode encryipterMode;
+  final EncrypterMode encrypterMode;
   late final IV? iv;
 
   EncryptionManager({
     required this.secureKey,
-    required this.encryipterMode,
-  }) : iv = encryipterMode.getIv;
+    required this.encrypterMode,
+  }) : iv = encrypterMode.getIv;
 
   Encrypter get encrypter {
-    switch (encryipterMode) {
-      case EncryipterMode.fernet:
+    switch (encrypterMode) {
+      case EncrypterMode.fernet:
         return configureFernetEncrpyter();
-      case EncryipterMode.aes:
+      case EncrypterMode.aes:
         throw UnimplementedError(
             'AES typed encryption is not implemented at $runtimeType');
-      case EncryipterMode.salsa20:
+      case EncrypterMode.salsa20:
         return configureSalsa20Encrypter();
       default:
         return configureFernetEncrpyter();
@@ -27,9 +27,8 @@ class EncryptionManager {
   }
 
   Encrypter configureFernetEncrpyter() {
-    final key = Key.fromUtf8(secureKey).stretch(32);
+    final key = Key.fromUtf8(secureKey);
     final b64Key = Key.fromUtf8(base64Url.encode(key.bytes).substring(0, 32));
-
     return Encrypter(Fernet(b64Key));
   }
 
@@ -46,9 +45,14 @@ class EncryptionManager {
   }
 
   String decrypt(String? encryptedText) {
-    final decryptedText = encryptedText != null && encryptedText.isNotEmpty
-        ? encrypter.decrypt64(encryptedText, iv: iv)
-        : '';
-    return decryptedText;
+    if (encryptedText != null) {
+      // final encrypted = Encrypted.fromBase64(encryptedText);
+      final decryptedText = encrypter.decrypt64(encryptedText, iv: iv);
+      return decryptedText;
+      // final decryptedText = encryptedText != null && encryptedText.isNotEmpty
+      //     ? encrypter.decrypt64(encryptedText, iv: iv)
+      //     : '';
+    }
+    return '';
   }
 }

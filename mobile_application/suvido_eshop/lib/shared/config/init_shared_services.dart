@@ -21,7 +21,7 @@ Future<void> initSharedServices() async {
 
   getIt.registerSingleton<EncryptionManager>(EncryptionManager(
     secureKey: SecurityConstants.encryptionKey,
-    encryipterMode: EncryipterMode.fernet,
+    encrypterMode: EncrypterMode.fernet,
   ));
 
   getIt.registerSingletonAsync<SharedPrefencesService>(() async {
