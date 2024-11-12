@@ -39,15 +39,12 @@ class ProductImageHeaderDelegate implements SliverPersistentHeaderDelegate {
       FloatingHeaderSnapConfiguration();
 
   @override
-  // TODO: implement showOnScreenConfiguration
   PersistentHeaderShowOnScreenConfiguration? get showOnScreenConfiguration =>
       null;
 
   @override
-  // TODO: implement stretchConfiguration
   OverScrollHeaderStretchConfiguration? get stretchConfiguration => null;
 
   @override
-  // TODO: implement vsync
   TickerProvider? get vsync => null;
 }

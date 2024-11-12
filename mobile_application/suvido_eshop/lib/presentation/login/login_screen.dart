@@ -38,11 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: AppSpacing.veryHuge,
                 ),
-                Row(
+                const Row(
                   children: [
                     Expanded(
                       child: Text(
-                        'SivuShop',
+                        'TutiShop',
                         style: AppFontStyles.boldWhite23,
                         textAlign: TextAlign.center,
                       ),
@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: AppSpacing.small,
                 ),
                 TextField(
-                  obscureText: true,
+                  obscureText: state.obscureText,
                   maxLines: 1,
                   style: AppFontStyles.regularWhite13,
                   controller: cubit.passwordController,
@@ -96,9 +96,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderSide: BorderSide.none,
                     ),
                     suffixIcon: IconButton(
-                      onPressed: () {},
+                      onPressed: cubit.onVisibilityPressed,
                       icon: Icon(
-                        Icons.visibility,
+                        state.obscureText
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                         color: AppColors.primaryWhite,
                       ),
                     ),
@@ -122,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: AppSpacing.medium,
                 ),
-                Row(
+                const Row(
                   children: [
                     Expanded(
                       child: Text(
@@ -136,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: AppSpacing.medium,
                 ),
-                Divider(
+                const Divider(
                   color: AppColors.primaryGrey,
                 ),
                 Row(
@@ -149,17 +151,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         backgroundColor: Colors.transparent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(
+                          side: const BorderSide(
                             color: AppColors.primaryWhite,
                           ),
                         ),
                       ),
                       onPressed: () {},
-                      label: Text(
+                      label: const Text(
                         'Sign In With Email',
                         style: AppFontStyles.boldWhite13,
                       ),
-                      icon: Icon(Icons.email_outlined),
+                      icon: const Icon(Icons.email_outlined),
                     ))
                   ],
                 ),
@@ -180,11 +182,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       onPressed: () {},
-                      label: Text(
+                      label: const Text(
                         'Sign In With Apple',
                         style: AppFontStyles.boldBlack13,
                       ),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.apple_outlined,
                         color: AppColors.primaryBlack,
                       ),
@@ -208,11 +210,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         onPressed: () {},
-                        label: Text(
+                        label: const Text(
                           'Sign In With Facebook',
                           style: AppFontStyles.boldWhite13,
                         ),
-                        icon: Icon(Icons.facebook_outlined),
+                        icon: const Icon(Icons.facebook_outlined),
                       ),
                     )
                   ],
@@ -221,13 +223,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Don't you have an account?",
                       style: AppFontStyles.regularWhite13,
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "Sign in!",
                         style: AppFontStyles.boldWhite13,
                       ),

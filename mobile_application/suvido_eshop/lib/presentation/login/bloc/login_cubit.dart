@@ -77,4 +77,10 @@ class LoginCubit extends Cubit<LoginState> {
       ),
     );
   }
+
+  void onVisibilityPressed() {
+    emit(state.copyWith(
+      obscureText: !state.obscureText,
+    ));
+  }
 }
