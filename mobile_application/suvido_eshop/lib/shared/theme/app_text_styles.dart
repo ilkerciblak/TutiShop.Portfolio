@@ -25,6 +25,13 @@ class AppFontStyles {
     color: AppColors.primaryWhite,
   );
 
+  static const TextStyle regularBlack11 = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.normal,
+    fontStyle: FontStyle.normal,
+    fontFamily: 'Merriweather',
+    color: AppColors.primaryBlack,
+  );
   static const TextStyle regularBlack13 = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.normal,
@@ -103,6 +110,13 @@ class AppFontStyles {
     color: AppColors.primaryWhite,
   );
 
+  static const TextStyle boldBlack11 = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.bold,
+    fontStyle: FontStyle.normal,
+    fontFamily: 'Merriweather',
+    color: AppColors.primaryBlack,
+  );
   static const TextStyle boldBlack13 = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.bold,

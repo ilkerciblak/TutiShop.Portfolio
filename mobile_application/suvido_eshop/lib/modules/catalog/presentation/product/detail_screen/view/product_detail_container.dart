@@ -1,6 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:suvido_eshop/modules/catalog/domain/_catalog_domain_exporter.dart';
+import 'package:suvido_eshop/modules/catalog/presentation/review/review_container.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
 
 class ProductDetailContainer extends StatelessWidget {
@@ -63,6 +66,35 @@ class ProductDetailContainer extends StatelessWidget {
             children: [Expanded(child: Divider())],
           ),
           const SizedBox(height: AppSpacing.small),
+          const Text(
+            'Reviews',
+            style: AppFontStyles.boldBlack18,
+          ),
+          const SizedBox(height: AppSpacing.medium),
+          ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              semanticChildCount: 1,
+              itemCount: min(10, product.reviews.length),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: AppSpacing.large),
+                  child: ReviewContainer(review: product.reviews[index]),
+                );
+              }),
+          // Wrap(
+          //   runSpacing: AppSpacing.large,
+          //   children: List.generate(
+          //     product.reviews.length,
+          //     (index) {
+          //       return ReviewContainer(review: product.reviews[index]);
+          //     },
+          //   ),
+          // ),
+          const SizedBox(height: AppSpacing.medium),
+          const Row(
+            children: [Expanded(child: Divider())],
+          ),
           Row(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.end,

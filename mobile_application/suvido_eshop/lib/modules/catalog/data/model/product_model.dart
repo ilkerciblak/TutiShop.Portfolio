@@ -1,5 +1,5 @@
-import 'dart:convert';
 import 'package:collection/collection.dart';
+import 'package:suvido_eshop/modules/catalog/data/model/review_model.dart';
 import 'package:suvido_eshop/modules/catalog/domain/_catalog_domain_exporter.dart';
 
 class ProductModel {
@@ -13,6 +13,7 @@ class ProductModel {
   final int stock;
   final String thumbnail;
   final List<String> images;
+  final List<ReviewModel> reviews;
   ProductModel({
     required this.identifier,
     required this.categoryId,
@@ -24,6 +25,7 @@ class ProductModel {
     required this.stock,
     required this.thumbnail,
     required this.images,
+    required this.reviews,
   });
 
   ProductModel copyWith({
@@ -37,6 +39,7 @@ class ProductModel {
     int? stock,
     String? thumbnail,
     List<String>? images,
+    List<ReviewModel>? reviews,
   }) {
     return ProductModel(
       identifier: identifier ?? this.identifier,
@@ -49,45 +52,9 @@ class ProductModel {
       stock: stock ?? this.stock,
       thumbnail: thumbnail ?? this.thumbnail,
       images: images ?? this.images,
+      reviews: reviews ?? this.reviews,
     );
   }
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'identifier': identifier,
-      'categoryId': categoryId,
-      'title': title,
-      'description': description,
-      'categoryName': categoryName,
-      'price': price,
-      'rating': rating,
-      'stock': stock,
-      'thumbnail': thumbnail,
-      'images': images,
-    };
-  }
-
-  factory ProductModel.fromMap(Map<String, dynamic> map) {
-    return ProductModel(
-      identifier: map['identifier'] as int,
-      categoryId: map['categoryId'] as int,
-      title: map['title'] as String,
-      description: map['description'] as String,
-      categoryName: map['categoryName'] as String,
-      price: map['price'] as double,
-      rating: map['rating'] as double,
-      stock: map['stock'] as int,
-      thumbnail: map['thumbnail'] as String,
-      images: List<String>.from(
-        (map['images'] as List<String>),
-      ),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory ProductModel.fromJson(String source) =>
-      ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   Product toEntity() {
     return Product(
@@ -101,6 +68,7 @@ class ProductModel {
       stock: stock,
       thumbnail: thumbnail,
       images: images,
+      reviews: reviews.map((r) => r.toEntity()).toList(),
     );
   }
 

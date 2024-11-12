@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:suvido_eshop/modules/catalog/domain/review.dart';
 
 class Product {
   final int identifier;
@@ -11,6 +12,7 @@ class Product {
   final int stock;
   final String thumbnail;
   final List<String> images;
+  final List<Review> reviews;
 
   Product({
     required this.identifier,
@@ -23,6 +25,7 @@ class Product {
     required this.stock,
     required this.thumbnail,
     required this.images,
+    required this.reviews,
   });
 
   factory Product.def() => Product(
@@ -36,6 +39,7 @@ class Product {
         stock: 0,
         thumbnail: '',
         images: List.empty(),
+        reviews: List.empty(),
       );
 
   Product copyWith({
@@ -49,6 +53,7 @@ class Product {
     int? stock,
     String? thumbnail,
     List<String>? images,
+    List<Review>? reviews,
   }) {
     return Product(
       identifier: identifier ?? this.identifier,
@@ -61,6 +66,7 @@ class Product {
       stock: stock ?? this.stock,
       thumbnail: thumbnail ?? this.thumbnail,
       images: images ?? this.images,
+      reviews: reviews ?? this.reviews,
     );
   }
 
@@ -78,7 +84,8 @@ class Product {
         other.rating == rating &&
         other.stock == stock &&
         other.thumbnail == thumbnail &&
-        listEquals(other.images, images);
+        listEquals(other.images, images) &&
+        listEquals(other.reviews, reviews);
   }
 
   @override
@@ -92,6 +99,7 @@ class Product {
         rating.hashCode ^
         stock.hashCode ^
         thumbnail.hashCode ^
-        images.hashCode;
+        images.hashCode ^
+        reviews.hashCode;
   }
 }

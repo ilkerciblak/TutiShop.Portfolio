@@ -14,20 +14,7 @@ class ProductService {
     return response.map(
       (data) => (data['products'] as List<dynamic>)
           .map(
-            (product) => ProductModel(
-              identifier: product['id'] ?? 0,
-              categoryId: product['categoryId'] ?? 0,
-              title: product['title'] ?? '',
-              description: product['description'] ?? '',
-              categoryName: product['category'] ?? '',
-              price: product['price'] ?? 0.0,
-              rating: product['rating'] ?? 0.0,
-              stock: product['stock'] ?? 0,
-              thumbnail: product['thumbnail'] ?? '',
-              images: (product['images'] as List<dynamic>)
-                  .map((x) => x.toString())
-                  .toList(),
-            ),
+            (product) => _dummyProductModelMapper(product),
           )
           .toList(),
     );
@@ -43,20 +30,7 @@ class ProductService {
     return response.map(
       (data) => (data['products'] as List<dynamic>)
           .map(
-            (product) => ProductModel(
-              identifier: product['id'] ?? 0,
-              categoryId: product['categoryId'] ?? 0,
-              title: product['title'] ?? '',
-              description: product['description'] ?? '',
-              categoryName: product['category'] ?? '',
-              price: product['price'] ?? 0.0,
-              rating: product['rating'] ?? 0.0,
-              stock: product['stock'] ?? 0,
-              thumbnail: product['thumbnail'] ?? '',
-              images: (product['images'] as List<dynamic>)
-                  .map((x) => x.toString())
-                  .toList(),
-            ),
+            (product) => _dummyProductModelMapper(product),
           )
           .toList(),
     );
@@ -69,19 +43,32 @@ class ProductService {
     var response = await api.getSingleProduct(productId: productId);
 
     return response.map(
-      (data) => ProductModel(
-        identifier: data['id'] ?? 0,
-        categoryId: data['categoryId'] ?? 0,
-        title: data['title'] ?? '',
-        description: data['description'] ?? '',
-        categoryName: data['category'] ?? '',
-        price: data['price'] ?? 0.0,
-        rating: data['rating'] ?? 0.0,
-        stock: data['stock'] ?? 0,
-        thumbnail: data['thumbnail'] ?? '',
-        images:
-            (data['images'] as List<dynamic>).map((x) => x.toString()).toList(),
-      ),
+      (data) => _dummyProductModelMapper(data),
+    );
+  }
+
+  ProductModel _dummyProductModelMapper(Map<String, dynamic> map) {
+    return ProductModel(
+      identifier: map['id'] ?? 0,
+      categoryId: map['categoryId'] ?? 0,
+      title: map['title'] ?? '',
+      description: map['description'] ?? '',
+      categoryName: map['category'] ?? '',
+      price: map['price'] ?? 0.0,
+      rating: map['rating'] ?? 0.0,
+      stock: map['stock'] ?? 0,
+      thumbnail: map['thumbnail'] ?? '',
+      reviews: (map['reviews'] ?? [])
+          .map<ReviewModel>(
+            (x) => ReviewModel(
+              rating: x['rating'],
+              comment: x['comment'],
+              username: x['reviewerName'],
+              date: x['date'],
+            ),
+          )
+          .toList(),
+      images: (map['images'] ?? []).map<String>((x) => x.toString()).toList(),
     );
   }
 }
