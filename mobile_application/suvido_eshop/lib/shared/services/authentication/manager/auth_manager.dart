@@ -28,6 +28,7 @@ class AuthManager {
             userId: r.userId,
             expireInMin: r.expireInMin,
           );
+          print(tokenManager.getAccessToken());
         });
       },
       (error, stackTrace) {

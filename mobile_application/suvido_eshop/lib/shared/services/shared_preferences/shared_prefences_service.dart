@@ -3,8 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPrefencesService {
   final SharedPreferences _prefences;
 
-  SharedPrefencesService({required SharedPreferences prefences})
-      : _prefences = prefences;
+  SharedPrefencesService({
+    required SharedPreferences prefences,
+  }) : _prefences = prefences;
 
   Future<void> saveString(String key, String value) async {
     await _prefences.setString(key, value);

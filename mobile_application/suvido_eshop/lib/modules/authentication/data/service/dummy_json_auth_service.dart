@@ -1,6 +1,4 @@
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
-import 'package:suvido_eshop/shared/authentication/interfaces/i_auth_service.dart';
-import 'package:suvido_eshop/shared/authentication/model/authentication_response.dart';
 import 'package:fpdart/fpdart.dart';
 
 class DummyJsonAuthService implements IAuthService {

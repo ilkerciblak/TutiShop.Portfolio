@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:encrypt/encrypt.dart';
 import 'package:suvido_eshop/shared/services/encryption/encryipter_mode.dart';
 
-class EncriptionManager {
+class EncryptionManager {
   final String secureKey;
   final EncryipterMode encryipterMode;
   late final IV? iv;
 
-  EncriptionManager({
+  EncryptionManager({
     required this.secureKey,
     required this.encryipterMode,
   }) : iv = encryipterMode.getIv;
@@ -27,7 +27,7 @@ class EncriptionManager {
   }
 
   Encrypter configureFernetEncrpyter() {
-    final key = Key.fromUtf8(secureKey);
+    final key = Key.fromUtf8(secureKey).stretch(32);
     final b64Key = Key.fromUtf8(base64Url.encode(key.bytes).substring(0, 32));
 
     return Encrypter(Fernet(b64Key));
@@ -35,7 +35,7 @@ class EncriptionManager {
 
   Encrypter configureSalsa20Encrypter() {
     final key = Key.fromUtf8(secureKey);
-    final b64Key = Key.fromUtf8(base64Url.encode(key.bytes).substring(0, 32));
+    final b64Key = Key.fromUtf8(base64Url.encode(key.bytes).substring(0, 24));
 
     return Encrypter(Salsa20(b64Key));
   }
@@ -45,8 +45,10 @@ class EncriptionManager {
     return encrytedText.base64;
   }
 
-  String decrypt(String encryptedText) {
-    final decryptedText = encrypter.decrypt64(encryptedText, iv: iv);
+  String decrypt(String? encryptedText) {
+    final decryptedText = encryptedText != null && encryptedText.isNotEmpty
+        ? encrypter.decrypt64(encryptedText, iv: iv)
+        : '';
     return decryptedText;
   }
 }

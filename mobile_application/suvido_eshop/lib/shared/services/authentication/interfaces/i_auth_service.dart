@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:suvido_eshop/shared/authentication/_authentication_exporter.dart';
+import 'package:suvido_eshop/shared/services/authentication/_authentication_exporter.dart';
 
 abstract class IAuthService {
   TaskEither<Exception, AuthenticationResponse> login(

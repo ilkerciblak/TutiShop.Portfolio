@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:suvido_eshop/shared/authentication/_authentication_exporter.dart';
-import 'package:suvido_eshop/shared/authentication/presentation/bloc/auth_cubit.dart';
+import 'package:suvido_eshop/shared/services/authentication/_authentication_exporter.dart';
+import 'package:suvido_eshop/shared/services/authentication/presentation/bloc/auth_cubit.dart';
 import 'package:suvido_eshop/shared/enums/authentication_status.dart';
 
 class AuthControllerWidget extends StatefulWidget {

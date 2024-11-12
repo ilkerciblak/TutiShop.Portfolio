@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:suvido_eshop/shared/authentication/model/authentication.dart';
+import 'package:suvido_eshop/shared/services/authentication/model/authentication.dart';
 import 'package:suvido_eshop/shared/enums/authentication_status.dart';
 
 class AuthCubit extends Cubit<Authentication> {

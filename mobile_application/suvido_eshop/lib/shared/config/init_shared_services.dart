@@ -2,6 +2,10 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suvido_eshop/modules/authentication/data/service/dummy_json_auth_service.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
+import 'package:suvido_eshop/shared/config/security_constants.dart';
+import 'package:suvido_eshop/shared/services/encryption/encription_manager.dart';
+import 'package:suvido_eshop/shared/services/encryption/encryipter_mode.dart';
+import 'package:suvido_eshop/shared/services/shared_preferences/encrypted_shared_preferences_service.dart';
 
 final getIt = GetIt.instance;
 
@@ -15,9 +19,17 @@ Future<void> initSharedServices() async {
     ),
   );
 
+  getIt.registerSingleton<EncryptionManager>(EncryptionManager(
+    secureKey: SecurityConstants.encryptionKey,
+    encryipterMode: EncryipterMode.fernet,
+  ));
+
   getIt.registerSingletonAsync<SharedPrefencesService>(() async {
     final prefs = await SharedPreferences.getInstance();
-    return SharedPrefencesService(prefences: prefs);
+    return EncrytedSharedPreferencesService(
+      preferences: prefs,
+      encryptionManager: getIt<EncryptionManager>(),
+    );
   });
 
   await getIt.isReady<SharedPrefencesService>();
