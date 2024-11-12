@@ -37,7 +37,6 @@ First of all, main goal of the project is practicing Design Patterns and some de
         - [ ] Secure Shared Preferences
         - [ ] Secure Shared Preferences implementation on Authentication
         - [ ] Authentication Consumer Flow that Based on Refresh Token
-            - Auth Manager tekil bir sey degil her sikko servis icin bir manager kullandik  
         - [ ] Implement Error Statuses
         - [ ] Go on to Basket Feature
 # Project Structure
