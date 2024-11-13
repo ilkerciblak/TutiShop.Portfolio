@@ -7,4 +7,5 @@ class EnvironmentVariables {
   static const dummyAuthLoginPath = "/auth/login";
   static const dummyAuthRefreshPath = "/auth/refresh";
   static const dummyGetCurrentUser = "/user/me";
+  static const dummyUpdateUserPath = "/user/:id";
 }

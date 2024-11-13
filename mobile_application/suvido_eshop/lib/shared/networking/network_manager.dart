@@ -13,7 +13,7 @@ class NetworkManager {
 
   NetworkManager({
     required this.baseUrl,
-    this.headers = const {},
+    this.headers = const {'Content-Type': 'application/json'},
     this.timeOut = 5,
   });
 
@@ -49,6 +49,24 @@ class NetworkManager {
         uri,
         body: jsonEncode(body),
         headers: {'Content-Type': 'application/json'},
+      ),
+    ).run();
+
+    return result;
+  }
+
+  Future<ExceptionEither<Map<String, dynamic>>> put({
+    required String endPoint,
+    required Map<String, dynamic> body,
+    Map<String, String>? headers,
+  }) async {
+    Uri uri = Uri.parse(baseUrl).replace(path: endPoint);
+
+    var result = await _sendRequest(
+      http.put(
+        uri,
+        body: jsonEncode(body),
+        headers: this.headers.insert(other: headers),
       ),
     ).run();
 

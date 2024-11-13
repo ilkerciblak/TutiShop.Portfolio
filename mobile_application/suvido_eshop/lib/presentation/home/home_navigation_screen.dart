@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:suvido_eshop/modules/user/presentation/user_tab_main/user_tab_main_screen.dart';
 import 'package:suvido_eshop/presentation/home/home_navigation_cubit.dart';
 import 'package:suvido_eshop/presentation/home/shop/shop_screen.dart';
 import 'package:suvido_eshop/shared/_project_shared_exporter.dart';
@@ -30,7 +31,7 @@ class _HomeNavigationScreenState extends State<HomeNavigationScreen> {
           body: [
             const ShopScreen(),
             Container(),
-            Container(),
+            const UserTabMainScreen(),
           ][state],
           bottomNavigationBar: SalomonBottomBar(
             currentIndex: state,

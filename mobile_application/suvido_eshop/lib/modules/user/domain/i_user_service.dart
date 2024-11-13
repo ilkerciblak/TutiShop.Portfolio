@@ -5,4 +5,10 @@ abstract class IUserService {
   Future<ExceptionEither<UserModel>> getCurrentUser({
     required String accessToken,
   });
+
+  Future<ExceptionEither<UserModel>> updateUser({
+    required String accessToken,
+    required Map<String, dynamic> requestBody,
+    required int userId,
+  });
 }

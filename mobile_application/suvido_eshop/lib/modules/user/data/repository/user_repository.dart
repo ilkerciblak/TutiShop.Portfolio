@@ -30,4 +30,29 @@ class UserRepository implements IUserRepository {
       },
     );
   }
+
+  @override
+  TaskEither<Exception, User> updateUser({
+    required String accessToken,
+    required User user,
+  }) {
+    return TaskEither.tryCatch(() async {
+      var response = await userService.updateUser(
+        accessToken: accessToken,
+        requestBody: UserModel.fromEntity(user).toMap(),
+        userId: user.identifier,
+      );
+
+      return response.fold((l) {
+        throw l;
+      }, (r) {
+        return r.toEntity();
+      });
+    }, (error, stackTrace) {
+      if (error is NetworkException) {
+        return error;
+      }
+      return Exception();
+    });
+  }
 }

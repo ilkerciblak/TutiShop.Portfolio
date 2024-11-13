@@ -14,25 +14,47 @@ class DummyUserService implements IUserService {
     );
 
     return response.map(
-      (data) => UserModel(
-        identifier: data['id'] as int,
-        firstName: data['firstName'],
-        lastName: data['lastName'],
-        email: data['email'],
-        username: data['username'],
-        paymentMethod: PaymentMethodModel(
-          cardNumber: data['bank']['cardNumber'],
-          cardType: data['bank']['cartType'],
-          cardExpire: data['bank']['cardExpire'],
-        ),
-        address: AddressModel(
-          country: data['address']['country'],
-          city: data['address']['city'],
-          state: data['address']['state'],
-          postalCode: data['address']['postalCode'],
-          address: data['address']['address'],
-        ),
+      (data) => _dummyResponseUserModelMapper(data),
+    );
+  }
+
+  @override
+  Future<ExceptionEither<UserModel>> updateUser({
+    required String accessToken,
+    required Map<String, dynamic> requestBody,
+    required int userId,
+  }) async {
+    var response = await api.updateUser(
+      requestBody: requestBody,
+      accessToken: accessToken,
+      userId: userId,
+    );
+
+    return response.map(
+      (data) => _dummyResponseUserModelMapper(data),
+    );
+  }
+
+  UserModel _dummyResponseUserModelMapper(Map<String, dynamic> data) {
+    return UserModel(
+      identifier: data['id'] as int,
+      firstName: data['firstName'] ?? '',
+      lastName: data['lastName'],
+      email: data['email'],
+      username: data['username'] ?? '',
+      paymentMethod: PaymentMethodModel(
+        cardNumber: data['bank']['cardNumber'],
+        cardType: data['bank']['cardType'],
+        cardExpire: data['bank']['cardExpire'],
       ),
+      address: AddressModel(
+        country: data['address']['country'],
+        city: data['address']['city'],
+        state: data['address']['state'],
+        postalCode: data['address']['postalCode'],
+        address: data['address']['address'],
+      ),
+      img: data['image'] ?? '',
     );
   }
 }

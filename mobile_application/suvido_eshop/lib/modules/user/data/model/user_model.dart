@@ -13,6 +13,7 @@ class UserModel {
   final String username;
   final PaymentMethodModel paymentMethod;
   final AddressModel address;
+  final String img;
   UserModel({
     required this.identifier,
     required this.firstName,
@@ -21,6 +22,7 @@ class UserModel {
     required this.username,
     required this.paymentMethod,
     required this.address,
+    required this.img,
   });
 
   UserModel copyWith({
@@ -31,6 +33,7 @@ class UserModel {
     String? username,
     PaymentMethodModel? paymentMethod,
     AddressModel? address,
+    String? img,
   }) {
     return UserModel(
       identifier: identifier ?? this.identifier,
@@ -40,6 +43,7 @@ class UserModel {
       username: username ?? this.username,
       paymentMethod: paymentMethod ?? this.paymentMethod,
       address: address ?? this.address,
+      img: img ?? this.img,
     );
   }
 
@@ -64,6 +68,7 @@ class UserModel {
       username: map['username'] as String,
       paymentMethod: PaymentMethodModel.initial(),
       address: AddressModel.initial(),
+      img: map['img'],
     );
   }
 
@@ -73,13 +78,24 @@ class UserModel {
       UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   User toEntity() => User(
-        identifier: identifier.toString(),
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        username: username,
-        paymentMethod: paymentMethod.toEntity(),
-        address: address.toEntity(),
+      identifier: identifier,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      username: username,
+      paymentMethod: paymentMethod.toEntity(),
+      address: address.toEntity(),
+      image: img);
+
+  factory UserModel.fromEntity(User user) => UserModel(
+        identifier: user.identifier,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        username: user.username,
+        paymentMethod: PaymentMethodModel.fromEntity(user.paymentMethod),
+        address: AddressModel.fromEntity(user.address),
+        img: user.image,
       );
 
   @override
@@ -92,7 +108,8 @@ class UserModel {
         other.email == email &&
         other.username == username &&
         other.paymentMethod == paymentMethod &&
-        other.address == address;
+        other.address == address &&
+        other.img == img;
   }
 
   @override
@@ -103,6 +120,7 @@ class UserModel {
         email.hashCode ^
         username.hashCode ^
         paymentMethod.hashCode ^
-        address.hashCode;
+        address.hashCode ^
+        img.hashCode;
   }
 }

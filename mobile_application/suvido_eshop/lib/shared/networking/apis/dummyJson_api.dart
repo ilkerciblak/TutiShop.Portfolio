@@ -76,4 +76,18 @@ class DummyJsonApi {
       parameters: parameters,
     );
   }
+
+  Future<ExceptionEither<Map<String, dynamic>>> updateUser({
+    required Map<String, dynamic> requestBody,
+    required String accessToken,
+    required int userId,
+  }) async {
+    return networkManager.put(
+        endPoint: EnvironmentVariables.dummyUpdateUserPath.replaceFirst(
+          ':id',
+          userId.toString(),
+        ),
+        body: requestBody,
+        headers: {'Authorization': 'Bearer $accessToken'});
+  }
 }
